@@ -113,4 +113,12 @@ public class TestSuite
         // 2
         Assert.LessOrEqual(ship.transform.position.x, 40.0f);
     }
+
+    [UnityTest]
+    public IEnumerator StartingScore()
+    {
+        game.NewGame();
+        yield return new WaitForSeconds(0.1f);
+        Assert.LessOrEqual(game.score, 0);
+    }
 }
