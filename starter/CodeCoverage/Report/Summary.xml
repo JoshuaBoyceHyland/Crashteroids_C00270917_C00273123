@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>23/09/2024 - 10:12:50</Generatedon>
+    <Generatedon>23/09/2024 - 10:34:21</Generatedon>
     <Parser>MultiReportParser (2x OpenCoverParser)</Parser>
     <Assemblies>2</Assemblies>
     <Classes>6</Classes>
     <Files>6</Files>
-    <Coveredlines>192</Coveredlines>
-    <Uncoveredlines>47</Uncoveredlines>
-    <Coverablelines>239</Coverablelines>
-    <Totallines>570</Totallines>
-    <Linecoverage>80.3</Linecoverage>
+    <Coveredlines>201</Coveredlines>
+    <Uncoveredlines>45</Uncoveredlines>
+    <Coverablelines>246</Coverablelines>
+    <Totallines>582</Totallines>
+    <Linecoverage>81.7</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
-    <Coveredmethods>37</Coveredmethods>
-    <Totalmethods>40</Totalmethods>
-    <Methodcoverage>92.5</Methodcoverage>
+    <Coveredmethods>38</Coveredmethods>
+    <Totalmethods>41</Totalmethods>
+    <Methodcoverage>92.6</Methodcoverage>
   </Summary>
   <Coverage>
-    <Assembly name="Ne" classes="5" coverage="74.7" coveredlines="139" coverablelines="186" totallines="466" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="28" totalmethods="31" methodcoverage="90.3">
+    <Assembly name="Ne" classes="5" coverage="75.8" coveredlines="141" coverablelines="186" totallines="466" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="28" totalmethods="31" methodcoverage="90.3">
       <Class name="Asteroid" coverage="84.2" coveredlines="16" coverablelines="19" totallines="60" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="4" methodcoverage="100" />
       <Class name="Game" coverage="100" coveredlines="40" coverablelines="40" totallines="97" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="7" methodcoverage="100" />
       <Class name="Laser" coverage="81.2" coveredlines="13" coverablelines="16" totallines="56" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="2" methodcoverage="100" />
       <Class name="Ship" coverage="49.2" coveredlines="32" coverablelines="65" totallines="130" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="10" methodcoverage="70" />
-      <Class name="Spawner" coverage="82.6" coveredlines="38" coverablelines="46" totallines="123" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="8" totalmethods="8" methodcoverage="100" />
+      <Class name="Spawner" coverage="86.9" coveredlines="40" coverablelines="46" totallines="123" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="8" totalmethods="8" methodcoverage="100" />
     </Assembly>
-    <Assembly name="Tests" classes="1" coverage="100" coveredlines="53" coverablelines="53" totallines="104" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="9" methodcoverage="100">
-      <Class name="TestSuite" coverage="100" coveredlines="53" coverablelines="53" totallines="104" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="9" methodcoverage="100" />
+    <Assembly name="Tests" classes="1" coverage="100" coveredlines="60" coverablelines="60" totallines="116" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="10" totalmethods="10" methodcoverage="100">
+      <Class name="TestSuite" coverage="100" coveredlines="60" coverablelines="60" totallines="116" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="10" totalmethods="10" methodcoverage="100" />
     </Assembly>
   </Coverage>
 </CoverageReport>

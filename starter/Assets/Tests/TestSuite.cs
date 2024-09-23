@@ -101,4 +101,16 @@ public class TestSuite
         // 2
         Assert.Less(ship.transform.position.x, startPosition.x);
     }
+
+    [UnityTest]
+    public IEnumerator ShipStaysInLimits()
+    {
+        GameObject ship = game.GetShip().gameObject;
+        Vector3 startPosition = ship.transform.position + new Vector3(50 , 0 , 0);
+
+        ship.GetComponent<Ship>().MoveLeft();
+        yield return new WaitForSeconds(0.1f);
+        // 2
+        Assert.LessOrEqual(ship.transform.position.x, 40.0f);
+    }
 }
