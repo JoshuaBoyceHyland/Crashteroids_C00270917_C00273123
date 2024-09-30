@@ -171,4 +171,64 @@ public class TestSuite
         yield return new WaitForSeconds(0.1f);
         Assert.LessOrEqual(game.score, 0);
     }
+
+
+
+
+
+    [UnityTest]
+    public IEnumerator SpeedPickupSpawns()
+    {
+        GameObject SpeedPickup = game.GetSpeedPickup().gameObject;
+        yield return new WaitForSeconds(0.1f);
+        Assert.IsNotNull(SpeedPickup);
+    }
+
+
+    [UnityTest]
+    public IEnumerator SpeedPickuRandom()
+    {
+        GameObject SpeedPickup1 = game.GetSpeedPickup().gameObject;
+        GameObject SpeedPickup2 = game.GetSpeedPickup().gameObject;
+        yield return new WaitForSeconds(0.1f);
+        Assert.AreNotEqual(SpeedPickup1.transform.position, SpeedPickup2.transform.position);
+    }
+
+
+    [UnityTest]
+    public IEnumerator SpeedPickupMovesDown()
+    {
+        GameObject SpeedPickup = game.GetSpeedPickup().gameObject;
+        float initialYPos = SpeedPickup.transform.position.y;
+        yield return new WaitForSeconds(0.1f);
+        Assert.Less(SpeedPickup.transform.position.y, initialYPos);
+    }
+
+    [UnityTest]
+    public IEnumerator SpeedPickupCollision()
+    {
+        GameObject SpeedPickup = game.GetSpeedPickup().gameObject;
+        GameObject ship = game.GetShip().gameObject;
+        SpeedPickup.transform.position = ship.transform.position;
+
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.IsNull(SpeedPickup.transform.position);
+        Assert.Greater(ship.GetComponent<Ship>().speed, 1);
+    }
+
+    [UnityTest]
+    public IEnumerator SpeedPickupWareOff()
+    {
+        GameObject ship = game.GetShip().gameObject;
+        ship.getComponent<Ship>.speedUp();
+
+
+        yield return new WaitForSeconds(7.0f);
+
+        Assert.Equals(ship.GetComponent<Ship>().speed, 1);
+    }
+
+
 }
