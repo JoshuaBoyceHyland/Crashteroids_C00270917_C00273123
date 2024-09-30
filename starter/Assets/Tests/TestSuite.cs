@@ -162,6 +162,13 @@ public class TestSuite
         asteroid.transform.position = game.GetShield().transform.position;
         yield return new WaitForSeconds(0.1f);
         Assert.IsFalse(ship.hasShield);
+    }
 
+    [UnityTest]
+    public IEnumerator StartingScore()
+    {
+        game.NewGame();
+        yield return new WaitForSeconds(0.1f);
+        Assert.LessOrEqual(game.score, 0);
     }
 }
