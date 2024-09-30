@@ -113,4 +113,55 @@ public class TestSuite
         // 2
         Assert.LessOrEqual(ship.transform.position.x, 40.0f);
     }
+
+    [UnityTest]
+    public IEnumerator SheildSpawns()
+    {
+        GameObject shield = game.GetShieldPickup().gameObject;
+        yield return new WaitForSeconds(0.1f);
+        Assert.IsNotNull(shield);
+    }
+
+
+    [UnityTest]
+    public IEnumerator SheildSpawnsRandom()
+    {
+        GameObject shield1 = game.GetShieldPickup().gameObject;
+        GameObject shield2 = game.GetShieldPickup().gameObject;
+        yield return new WaitForSeconds(0.1f);
+        Assert.AreNotEqual(shield1.transform.position, shield2.transform.position);
+    }
+
+    [UnityTest]
+    public IEnumerator ShieldPickupCollision()
+    {
+        GameObject ship = game.GetShip().gameObject;
+        GameObject shield = game.GetShieldPickup().gameObject;
+        ship.transform.position = shield.transform.position;
+        ship.GetComponent<Ship>().OnCollisionEnter();
+        yield return new WaitForSeconds(0.1f);
+        Assert.IsNull(shield.transform.position);
+        Assert.IsTrue(ship.hasShield);
+    }
+
+    [UnityTest]
+    public IEnumerator ShieldMovesDown()
+    {
+        GameObject shield = game.GetShieldPickup().gameObject;
+        float initialYPos = shield.transform.position.y;
+        yield return new WaitForSeconds(0.1f);
+        Assert.Less(shield.transform.position.y, initialYPos);
+    }
+
+    [UnityTest]
+    public IEnumerator ShieldCollision()
+    {
+        GameObject shield = game.GetShield().gameObject;
+        GameObject asteroid = game.GetSpawner().SpawnAsteroid();
+        GameObject ship = game.GetShip().gameObject;
+        asteroid.transform.position = game.GetShield().transform.position;
+        yield return new WaitForSeconds(0.1f);
+        Assert.IsFalse(ship.hasShield);
+
+    }
 }
