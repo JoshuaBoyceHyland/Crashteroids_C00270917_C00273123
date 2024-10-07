@@ -29,6 +29,7 @@
  */
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using Random = UnityEngine.Random;
@@ -42,10 +43,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject asteroid2;
     [SerializeField] private GameObject asteroid3;
     [SerializeField] private GameObject asteroid4;
+    [SerializeField] private GameObject shieldPickUp;
 
     private Vector3 spawnPosition;
     private AudioSource audioSource;
     private IEnumerator spawnRoutine;
+
     
     private void Awake()
     {
@@ -54,11 +57,28 @@ public class Spawner : MonoBehaviour
         spawnPosition = transform.position;
         audioSource = GetComponent<AudioSource>();
         spawnRoutine = Spawn();
+
+        
+    }
+
+    IEnumerator SpawnShieldPickups()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            spawnShield();
+        }
+    }
+
+    public void spawnShield()
+    {
+        Instantiate(shieldPickUp);
     }
 
     public void BeginSpawning()
     {
         StartCoroutine(spawnRoutine);
+        StartCoroutine(SpawnShieldPickups());   
     }
 
     IEnumerator Spawn()

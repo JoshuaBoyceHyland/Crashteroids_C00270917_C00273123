@@ -53,6 +53,8 @@ public class Ship : MonoBehaviour
 
     private void Update()
     {
+
+        print(transform.position);
         if (isDead)
         {
             return;
