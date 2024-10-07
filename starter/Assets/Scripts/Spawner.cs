@@ -43,6 +43,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject asteroid3;
     [SerializeField] private GameObject asteroid4;
 
+    [SerializeField] private GameObject speedPickup;
+
     private Vector3 spawnPosition;
     private AudioSource audioSource;
     private IEnumerator spawnRoutine;
@@ -59,6 +61,7 @@ public class Spawner : MonoBehaviour
     public void BeginSpawning()
     {
         StartCoroutine(spawnRoutine);
+        StartCoroutine(SpawnSpeedPickups());
     }
 
     IEnumerator Spawn()
@@ -68,6 +71,20 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
             SpawnAsteroid();
         }
+    }
+
+    IEnumerator SpawnSpeedPickups()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.4f);
+            SpawnSpeedPickup();
+        }
+    }
+
+    public void SpawnSpeedPickup()
+    {
+        Instantiate(speedPickup);
     }
 
     public GameObject SpawnAsteroid()
