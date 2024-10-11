@@ -155,110 +155,46 @@ public class TestSuite
         
     }
 
-    //[UnityTest]
-    //public IEnumerator CheckShieldIsDestroyed()
-    //{
-    //    game.GetSpawner().spawnShield();
-    //    GameObject shield = GameObject.FindAnyObjectByType<SheildPickup>().gameObject;
 
-    //    yield return new WaitForSeconds(10.0f);
-
-
-    //    Assert.IsNull(shield);
-
-    //}
+    [UnityTest]
+    public IEnumerator SpeedPickupSpawns()
+    {
+        game.GetSpawner().SpawnSpeedPickup();
+        GameObject SpeedPickup = GameObject.FindAnyObjectByType<SpeedPickup>().gameObject;
+        yield return new WaitForSeconds(0.1f);
+        Assert.IsNotNull(SpeedPickup);
+    }
 
 
-
-    //[UnityTest]
-    //public IEnumerator ShieldPickupCollision()
-    //{
-    //    GameObject ship = game.GetShip().gameObject;
-    //    GameObject shield = game.GetShieldPickup().gameObject;
-    //    ship.transform.position = shield.transform.position;
-    //    ship.GetComponent<Ship>().OnCollisionEnter();
-    //    yield return new WaitForSeconds(0.1f);
-    //    Assert.IsNull(shield.transform.position);
-    //    Assert.IsTrue(ship.hasShield);
-    //}
+    [UnityTest]
+    public IEnumerator SpeedPickuRandom()
+    {
+        game.GetSpawner().SpawnSpeedPickup();
+        game.GetSpawner().SpawnSpeedPickup();
+        SpeedPickup[] SpeedPickups = GameObject.FindObjectsOfType<SpeedPickup>();
+        yield return new WaitForSeconds(0.1f);
+        Assert.AreNotEqual(SpeedPickups[0].transform.position, SpeedPickups[1].transform.position);
+    }
 
 
-    //[UnityTest]
-    //public IEnumerator ShieldCollision()
-    //{
-    //    GameObject shield = game.GetShield().gameObject;
-    //    GameObject asteroid = game.GetSpawner().SpawnAsteroid();
-    //    GameObject ship = game.GetShip().gameObject;
-    //    asteroid.transform.position = game.GetShield().transform.position;
-    //    yield return new WaitForSeconds(0.1f);
-    //    Assert.IsFalse(ship.hasShield);
-    //}
+    [UnityTest]
+    public IEnumerator SpeedPickupMovesDown()
+    {
+        game.GetSpawner().SpawnSpeedPickup();
+        GameObject SpeedPickup = GameObject.FindAnyObjectByType<SpeedPickup>().gameObject;
+        float initialYPos = SpeedPickup.transform.position.y;
+        yield return new WaitForSeconds(0.1f);
+        Assert.Less(SpeedPickup.transform.position.y, initialYPos);
+    }
 
-    //[UnityTest]
-    //public IEnumerator StartingScore()
-    //{
-    //    game.NewGame();
-    //    yield return new WaitForSeconds(0.1f);
-    //    Assert.LessOrEqual(game.score, 0);
-    //}
-
-
-
-
-
-    //[UnityTest]
-    //public IEnumerator SpeedPickupSpawns()
-    //{
-    //    GameObject SpeedPickup = game.GetSpeedPickup().gameObject;
-    //    yield return new WaitForSeconds(0.1f);
-    //    Assert.IsNotNull(SpeedPickup);
-    //}
-
-
-    //[UnityTest]
-    //public IEnumerator SpeedPickuRandom()
-    //{
-    //    GameObject SpeedPickup1 = game.GetSpeedPickup().gameObject;
-    //    GameObject SpeedPickup2 = game.GetSpeedPickup().gameObject;
-    //    yield return new WaitForSeconds(0.1f);
-    //    Assert.AreNotEqual(SpeedPickup1.transform.position, SpeedPickup2.transform.position);
-    //}
-
-
-    //[UnityTest]
-    //public IEnumerator SpeedPickupMovesDown()
-    //{
-    //    GameObject SpeedPickup = game.GetSpeedPickup().gameObject;
-    //    float initialYPos = SpeedPickup.transform.position.y;
-    //    yield return new WaitForSeconds(0.1f);
-    //    Assert.Less(SpeedPickup.transform.position.y, initialYPos);
-    //}
-
-    //[UnityTest]
-    //public IEnumerator SpeedPickupCollision()
-    //{
-    //    GameObject SpeedPickup = game.GetSpeedPickup().gameObject;
-    //    GameObject ship = game.GetShip().gameObject;
-    //    SpeedPickup.transform.position = ship.transform.position;
-
-
-    //    yield return new WaitForSeconds(0.1f);
-
-    //    Assert.IsNull(SpeedPickup.transform.position);
-    //    Assert.Greater(ship.GetComponent<Ship>().speed, 1);
-    //}
-
-    //[UnityTest]
-    //public IEnumerator SpeedPickupWareOff()
-    //{
-    //    GameObject ship = game.GetShip().gameObject;
-    //    ship.getComponent<Ship>.speedUp();
-
-
-    //    yield return new WaitForSeconds(7.0f);
-
-    //    Assert.Equals(ship.GetComponent<Ship>().speed, 1);
-    //}
+    [UnityTest]
+    public IEnumerator SpeedPickupWareOff()
+    {
+        GameObject ship = game.GetShip().gameObject;
+        ship.GetComponent<Ship>().Speedup();
+        yield return new WaitForSeconds(7.0f);
+        Assert.AreEqual(5.0f, ship.GetComponent<Ship>().speed);
+    }
 
 
 }

@@ -129,4 +129,20 @@ public class Ship : MonoBehaviour
         mesh.enabled = true;
         isDead = false;
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Speed")
+        {
+            Destroy(collision.gameObject);
+            StartCoroutine(nameof(Speedup));
+        }
+    }
+
+    public IEnumerator Speedup()
+    {
+        speed = 2;
+        yield return new WaitForSeconds(7.0f);
+        speed = 1;
+    }
 }
