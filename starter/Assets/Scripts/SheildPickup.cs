@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Device;
+using static Codice.Client.Common.EventTracking.TrackFeatureUseEvent.Features.DesktopGUI.Filters;
 
 public class SheildPickup : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class SheildPickup : MonoBehaviour
 
     private void CheckForOffScreen()
     {
-        if (transform.position.y < -3)
+        if (transform.position.y < -5)
         {
             Destroy(gameObject);
         }
@@ -41,9 +42,22 @@ public class SheildPickup : MonoBehaviour
 
         spawnPos.x = Random.Range(-8, 8);
         spawnPos.y = 10;
-        spawnPos.z = 3.410729f;
-
-
+        spawnPos.z = 0;
         return spawnPos;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Ship possibleSHip = other.gameObject.GetComponent<Ship>();
+        if (possibleSHip != null)
+        {
+            possibleSHip.shield.SetActive(true);
+            Destroy(this.gameObject);
+        }
+    }
+
+    
+    
+   
+    
 }

@@ -36,7 +36,9 @@ public class Ship : MonoBehaviour
     public bool isDead = true;
     public float speed = 1;
     public bool canShoot = true;
+ 
 
+    public GameObject shield;
     [SerializeField] private  MeshRenderer mesh;
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject laser;
@@ -53,7 +55,6 @@ public class Ship : MonoBehaviour
 
     private void Update()
     {
-
         print(transform.position);
         if (isDead)
         {
@@ -129,6 +130,8 @@ public class Ship : MonoBehaviour
         mesh.enabled = true;
         isDead = false;
     }
+
+
 
     public void OnCollisionEnter(Collision collision)
     {
