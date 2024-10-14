@@ -149,10 +149,45 @@ public class TestSuite
         GameObject shield = GameObject.FindAnyObjectByType<SheildPickup>().gameObject;
         float initialYPos = shield.transform.position.y;
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(4.0f);
 
         Assert.Less(shield.transform.position.y, initialYPos);
-        
+
+
+    }
+
+    [UnityTest]
+    public IEnumerator ShieldActivatesOnColiision()
+    {
+        game.GetSpawner().spawnShield();
+
+        GameObject shield = GameObject.FindAnyObjectByType<SheildPickup>().gameObject;
+        GameObject ship = game.GetShip().gameObject;
+
+        ship.transform.position = shield.transform.position;    
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.IsTrue( ship.GetComponent<Ship>().shield.activeSelf);
+
+    }
+
+    [UnityTest]
+    public IEnumerator ShieldedShipSurvivesAsteroidCollision()
+    {
+
+        GameObject asteroid = game.GetSpawner().SpawnAsteroid();
+        GameObject ship = game.GetShip().gameObject;
+
+        ship.GetComponent<Ship>().shield.SetActive(true);
+
+        asteroid.transform.position = new Vector3( ship.transform.position.x, ship.transform.position.y  -  3, ship.transform.position.z);
+  
+        yield return new WaitForSeconds(3.0f);
+
+        Assert.IsNotNull(ship);
+        Assert.IsFalse(ship.GetComponent<Ship>().shield.activeSelf);
+
     }
 
 

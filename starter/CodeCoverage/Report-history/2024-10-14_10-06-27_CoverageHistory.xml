@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2024-10-14_10-06-27" tag="">
+  <assembly name="Ne">
+    <class name="Asteroid" coveredlines="0" coverablelines="19" totallines="60" coveredbranches="0" totalbranches="0" />
+    <class name="Game" coveredlines="28" coverablelines="40" totallines="98" coveredbranches="0" totalbranches="0" />
+    <class name="Laser" coveredlines="0" coverablelines="16" totallines="56" coveredbranches="0" totalbranches="0" />
+    <class name="NewBehaviourScript" coveredlines="0" coverablelines="4" totallines="18" coveredbranches="0" totalbranches="0" />
+    <class name="SheildPickup" coveredlines="21" coverablelines="40" totallines="63" coveredbranches="0" totalbranches="0" />
+    <class name="Shield" coveredlines="0" coverablelines="7" totallines="17" coveredbranches="0" totalbranches="0" />
+    <class name="Ship" coveredlines="20" coverablelines="93" totallines="151" coveredbranches="0" totalbranches="0" />
+    <class name="Spawner" coveredlines="29" coverablelines="86" totallines="160" coveredbranches="0" totalbranches="0" />
+    <class name="SpeedPickup" coveredlines="0" coverablelines="16" totallines="29" coveredbranches="0" totalbranches="0" />
+  </assembly>
+  <assembly name="Tests">
+    <class name="TestSuite" coveredlines="15" coverablelines="141" totallines="217" coveredbranches="0" totalbranches="0" />
+  </assembly>
+</coverage>
